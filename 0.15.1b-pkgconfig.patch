@@ -1,0 +1,35 @@
+--- origsrc/libid3tag-0.15.1b/Makefile.am	2004-02-16 20:11:28.000000000 -0600
++++ src/libid3tag-0.15.1b/Makefile.am	2008-05-07 23:18:16.109375000 -0500
+@@ -27,6 +27,9 @@
+ lib_LTLIBRARIES =	libid3tag.la
+ include_HEADERS =	id3tag.h
+ 
++pkgconfigdir = $(libdir)/pkgconfig
++pkgconfig_DATA = id3tag.pc
++
+ ## From the libtool documentation on library versioning:
+ ##
+ ## CURRENT
+--- origsrc/libid3tag-0.15.1b/configure.ac	2004-01-23 17:22:46.000000000 -0600
++++ src/libid3tag-0.15.1b/configure.ac	2008-05-07 23:18:16.125000000 -0500
+@@ -201,5 +201,6 @@
+ dnl AC_SUBST(LTLIBOBJS)
+ 
+ AC_CONFIG_FILES([Makefile msvc++/Makefile  \
++	id3tag.pc
+ 	libid3tag.list])
+ AC_OUTPUT
+--- origsrc/libid3tag-0.15.1b/id3tag.pc.in	1969-12-31 18:00:00.000000000 -0600
++++ src/libid3tag-0.15.1b/id3tag.pc.in	2008-05-07 23:18:16.171875000 -0500
+@@ -0,0 +1,11 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: id3tag
++Description: ID3 tag reading library
++Version: @VERSION@
++Cflags: -I${includedir}
++Libs: -L${libdir} -lid3tag
++Libs.private: -lz

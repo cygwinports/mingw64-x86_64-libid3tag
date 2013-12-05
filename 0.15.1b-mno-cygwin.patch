@@ -1,0 +1,28 @@
+--- origsrc/libid3tag-0.15.1b/configure.ac	2013-12-05 15:29:11.182570200 -0600
++++ src/libid3tag-0.15.1b/configure.ac	2013-12-05 15:32:33.067117300 -0600
+@@ -38,25 +38,6 @@ dnl Checks for programs.
+ 
+ AC_PROG_CC
+ 
+-if test "$GCC" = yes
+-then
+-    case "$host" in
+-	*-*-mingw*)
+-	    case "$build" in
+-		*-*-cygwin*)
+-		    CPPFLAGS="$CPPFLAGS -mno-cygwin"
+-		    LDFLAGS="$LDFLAGS -mno-cygwin"
+-		    ;;
+-	    esac
+-    esac
+-
+-dnl    case "$host" in
+-dnl	*-*-cygwin* | *-*-mingw*)
+-dnl	    LDFLAGS="$LDFLAGS -no-undefined -mdll"
+-dnl	    ;;
+-dnl    esac
+-fi
+-
+ dnl Support for libtool.
+ 
+ dnl AC_DISABLE_SHARED

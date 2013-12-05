@@ -1,0 +1,30 @@
+CROSS_HOST="x86_64-w64-mingw32"
+inherit cross
+
+NAME="mingw64-x86_64-libid3tag"
+VERSION=0.15.1b
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="ID3 tag library for Win64 toolchain"
+DESCRIPTION="libid3tag is a library for reading and (eventually) writing ID3
+tags, both ID3v1 and the various versions of ID3v2."
+HOMEPAGE="http://www.underbit.com/products/mad/"
+SRC_URI="mirror://sourceforge/mad/libid3tag-${VERSION}.tar.gz"
+SRC_DIR="libid3tag-${VERSION}"
+# the last one is obviously misnamed and may be renamed in the future
+PATCH_URI="
+	mirror://portage/media-libs/libid3tag/files/${VERSION}/libid3tag-${VERSION}-64bit-long.patch
+	mirror://portage/media-libs/libid3tag/files/${VERSION}/libid3tag-${VERSION}-a_capella.patch
+	mirror://portage/media-libs/libid3tag/files/${VERSION}/libid3tag-${VERSION}-compat.patch
+	mirror://portage/media-libs/libid3tag/files/${VERSION}/libid3tag-${VERSION}-file-write.patch
+	mirror://portage/media-libs/libid3tag/files/${VERSION}/libid3tag-${VERSION}-fix_overflow.patch
+	mirror://portage/media-libs/libid3tag/files/${VERSION}/libid3tag-${VERSION}-tag.patch
+	mirror://portage/media-libs/libid3tag/files/${VERSION}/libid3tag-${VERSION}-unknown-encoding.patch
+	mirror://portage/media-libs/libid3tag/files/${VERSION}/libid3tag-${VERSION}-utf16.patchlibid3tag-${VERSION}-utf16.patch
+	0.15.1b-no-undefined.patch
+	0.15.1b-pkgconfig.patch
+	0.15.1b-mno-cygwin.patch
+"
+
+DIFF_EXCLUDES="compat.c frametype.c"
+DISTCLEANFILES="id3tag.pc.in"
